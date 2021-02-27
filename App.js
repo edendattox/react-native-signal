@@ -1,11 +1,12 @@
 import React from 'react';
 import 'react-native-gesture-handler';
-import { StatusBar } from 'expo-status-bar';
+// import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import LoginScreen from './screens/LoginScreen';
 import { createStackNavigator } from '@react-navigation/stack';
 import RegisterScreen from './screens/RegisterScreen';
+import HomeScreen from './screens/HomeScreen';
 
 const Stack = createStackNavigator();
 
@@ -17,10 +18,15 @@ const globalScreenOptions = {
 
 export default function App() {
   return (
-    <NavigationContainer style={styles.container}>
-      <Stack.Navigator screenOptions={globalScreenOptions}>
+    <NavigationContainer style={styles.Container}>
+      <Stack.Navigator
+        screenOptions={globalScreenOptions}
+        initialRouteName="Home"
+        screenOptions={{ headerTitleAlign: 'center' }}
+      >
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Register" component={RegisterScreen} />
+        <Stack.Screen name="Home" component={HomeScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -28,7 +34,7 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
